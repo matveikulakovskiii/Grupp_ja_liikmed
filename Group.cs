@@ -10,6 +10,7 @@ namespace Grupp_ja_liikmed
     {
         public List<string> Members { get; } = new List<string>();
         private readonly int _maxAmount;
+        public List<Type> Types { get; } = new List<Type>();
 
         public Group(int maxAmount)
         {
@@ -34,6 +35,19 @@ namespace Grupp_ja_liikmed
             return Members.Contains(member);
         }
 
-    }
+        public Type Oldest()
+        {
+            if (Types.Count == 0) return null;
+            return Types.OrderBy(t => t.Age).Last();
+        }
 
+        public Type Youngest()
+        {
+            if (Types.Count == 0) return null;
+            return Types.OrderBy(t => t.Age).First();
+        }
+    }
 }
+
+
+
